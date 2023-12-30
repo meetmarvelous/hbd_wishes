@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copy Content Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .copy-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <button class="copy-button" onclick="copyToClipboard()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M17 9l-7 7-4-4"></path>
+    </svg>
+    Copy Content
+  </button>
+
+  <button class="copy-link-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M17 9l-7 7-4-4"></path>
+    </svg>
+  </button>
+  
+
+  <script>
+    function copyToClipboard() {
+      // Replace this with the actual content you want to copy
+      const contentToCopy = "Hello, world!";
+
+      // Create a temporary textarea element
+      const tempTextarea = document.createElement('textarea');
+      tempTextarea.value = contentToCopy;
+
+      // Append the textarea to the document
+      document.body.appendChild(tempTextarea);
+
+      // Select the text in the textarea
+      tempTextarea.select();
+      tempTextarea.setSelectionRange(0, 99999); /* For mobile devices */
+
+      // Copy the selected text to the clipboard
+      document.execCommand('copy');
+
+      // Remove the temporary textarea
+      document.body.removeChild(tempTextarea);
+
+      // You can add additional logic or UI feedback here if needed
+      alert('Content copied to clipboard: ' + contentToCopy);
+    }
+  </script>
+</body>
+</html>
