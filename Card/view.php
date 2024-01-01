@@ -4,21 +4,27 @@ session_start();
 
 
 //Get the specific item info 
+$getcode = $_GET["code"];
+$collect_one = "SELECT * FROM card where random ='$getcode' ";
 
-$settings = "SELECT * FROM settings where id ='10' ";
-
-$site_data = mysqli_query($con, $settings);
-if (!$site_data) {
+$one = mysqli_query($con, $collect_one);
+if (!$one) {
   die("unable to select from database" . mysqli_error($connection));
 }
-$site = mysqli_fetch_array($site_data);
+$item = mysqli_fetch_array($one);
 
 
-$receiver = $site["receiver"];
-$sender = $site["sender"];
-$header = $site["header"];
-$subject = $site["subject"];
-$content = $site["content"];
+$receiver = $item["receiver"];
+$sender = $item["sender"];
+$subject = $item["subject"];
+$content = $item["content"];
+
+$_SESSION["receiver"] = $receiver;
+$_SESSION["sender"] = $sender;
+$_SESSION["subject"] = $subject;
+$_SESSION["content"] = $content;
+$_SESSION["random"] = $getcode;
+
 ?>
 
 <!DOCTYPE html>
@@ -29,20 +35,22 @@ $content = $site["content"];
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title><?php echo $header ?></title>
+  <title>A SURPRISE CARD</title>
 
   <!-- Icons -->
   <link href="logo.png" rel="icon">
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
+
   <div class="birthdayCard">
     <div class="cardFront">
-      <h3 class="happy"><?php echo $header ?></h3>
+      <h3 class="happy">A SURPRISE CARD!</h3>
       <div class="balloons">
         <div class="balloonOne"></div>
         <div class="balloonTwo"></div>
@@ -51,13 +59,13 @@ $content = $site["content"];
       </div>
     </div>
     <div class="cardInside">
-      <h3 class="back"><?php echo $subject ?></h3>
-      <p>Dear <?php echo $receiver ?></p>
-      <p><?php echo $content ?></p>
-      <p class="name"><?php echo $sender ?></p>
+      <h3 class="back"><?php echo $_SESSION["subject"] ?></h3>
+      <p>Dear <?php echo $_SESSION["receiver"] ?></p>
+      <p><?php echo $_SESSION["content"] ?></p>
+      <p class="name"><?php echo $_SESSION["sender"] ?></p>
     </div>
   </div>
-
+  
   <div class="left-bottom">
     <a class="all create" href="form.php">
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" width="16" height="16" fill="white">
@@ -70,8 +78,29 @@ $content = $site["content"];
 
   </div>
 
+  <script>
+    function copyToClipboard(content) {
+      // Create a temporary textarea element
+      const tempTextarea = document.createElement('textarea');
+      tempTextarea.value = content;
 
-  <!-- <script src="copy.js"></script> -->
+      // Append the textarea to the document
+      document.body.appendChild(tempTextarea);
+
+      // Select the text in the textarea
+      tempTextarea.select();
+      tempTextarea.setSelectionRange(0, 99999); /* For mobile devices */
+
+      // Copy the selected text to the clipboard
+      document.execCommand('copy');
+
+      // Remove the temporary textarea
+      document.body.removeChild(tempTextarea);
+
+      // You can add additional logic or UI feedback here if needed
+      alert('Content copied to clipboard: ' + content);
+    }
+  </script>
   <script src="main.js"></script>
 </body>
 

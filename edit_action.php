@@ -2,23 +2,19 @@
 include "dbcon.php";
 session_start();
 
-if (isset($_POST['create'])) {
+if (isset($_POST['edit'])) {
     $receiver = $_POST["receiver"];
     $sender = $_POST["sender"];
     $subject = $_POST["subject"];
     $content = $_POST["content"];
     $time = date("d/m/Y");
 
+    $random = $_SESSION["random"];
+
     // Use prepared statement to prevent SQL injection
-    $sql = "INSERT INTO card (receiver, sender, subject, content, time, random) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "UPDATE card SET receiver=?, sender=?, subject=?, content=?, time=? WHERE random=?";
 
     $stmt = mysqli_prepare($con, $sql);
-
-    // Generate a unique identifier based on the current timestamp
-    $timestamp = time();
-    $randomNumber = mt_rand(1000, 9999);
-    $uniqueId = uniqid();
-    $random = substr(md5($timestamp . $randomNumber . $uniqueId), 0, 6);
 
     // Bind parameters and execute the statement
     mysqli_stmt_bind_param($stmt, "ssssss", $receiver, $sender, $subject, $content, $time, $random);
@@ -32,7 +28,7 @@ if (isset($_POST['create'])) {
         $_SESSION["content"] = $content;
         $_SESSION["random"] = $random;
 
-        echo "<script>window.alert('Successfully created'); window.location='create.php';</script>";
+        echo "<script>window.alert('Successfully edited'); window.location='create.php';</script>";
     } else {
         echo "<script>window.alert('Not successful!');</script>";
     }
