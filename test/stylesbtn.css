@@ -158,7 +158,7 @@ p {
   visibility:hidden; 
 }
 
-.left-bottom {
+.right-bottom {
   position: fixed;
   bottom: 20px;
   right: 20px; 

@@ -58,7 +58,7 @@ $content = $site["content"];
     </div>
   </div>
 
-  <div class="left-bottom">
+  <div class="right-bottom">
     <a class="all create" href="form.php">
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" width="16" height="16" fill="white">
         <path fill="white" d="M40.63 4.71A0.38 0.38 0 0 1 40.63 4.17L41.50 3.30A3.99 3.53 -45.0 0 1 46.81 2.97L47.03 3.19A3.99 3.53 -45.0 0 1 46.70 8.50L45.83 9.37A0.38 0.38 0 0 1 45.29 9.37L40.63 4.71Z"/>

@@ -66,7 +66,7 @@ $_SESSION["random"] = $getcode;
     </div>
   </div>
   
-  <div class="left-bottom">
+  <div class="right-bottom">
     <a class="all create" href="form.php">
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" width="16" height="16" fill="white">
         <path fill="white" d="M40.63 4.71A0.38 0.38 0 0 1 40.63 4.17L41.50 3.30A3.99 3.53 -45.0 0 1 46.81 2.97L47.03 3.19A3.99 3.53 -45.0 0 1 46.70 8.50L45.83 9.37A0.38 0.38 0 0 1 45.29 9.37L40.63 4.71Z"/>
@@ -78,29 +78,8 @@ $_SESSION["random"] = $getcode;
 
   </div>
 
-  <script>
-    function copyToClipboard(content) {
-      // Create a temporary textarea element
-      const tempTextarea = document.createElement('textarea');
-      tempTextarea.value = content;
 
-      // Append the textarea to the document
-      document.body.appendChild(tempTextarea);
 
-      // Select the text in the textarea
-      tempTextarea.select();
-      tempTextarea.setSelectionRange(0, 99999); /* For mobile devices */
-
-      // Copy the selected text to the clipboard
-      document.execCommand('copy');
-
-      // Remove the temporary textarea
-      document.body.removeChild(tempTextarea);
-
-      // You can add additional logic or UI feedback here if needed
-      alert('Content copied to clipboard: ' + content);
-    }
-  </script>
   <script src="main.js"></script>
 </body>
 

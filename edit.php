@@ -114,7 +114,7 @@ if (!isset($_SESSION["random"])) {
           <label for="subject">Subject</label>
         </div>
         <div class="col-75">
-          <textarea id="subject" name="subject" placeholder="Write subject.." style="height:200px" required><?php echo $_SESSION['subject'] ?>"</textarea>
+          <textarea id="subject" name="subject" placeholder="Write subject.." style="height:200px" required><?php echo $_SESSION['subject'] ?></textarea>
         </div>
       </div>
       <div class="row">
