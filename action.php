@@ -1,6 +1,6 @@
 <?php
-include "dbcon.php";
-session_start();
+require_once 'dbcon.php';
+require_once 'config.php';
 
 if (isset($_POST['create'])) {
     $receiver = $_POST["receiver"];
@@ -9,16 +9,16 @@ if (isset($_POST['create'])) {
     $content = $_POST["content"];
     $time = date("d/m/Y");
 
-    // Use prepared statement to prevent SQL injection
-    $sql = "INSERT INTO card (receiver, sender, subject, content, time, random) VALUES (?, ?, ?, ?, ?, ?)";
-
-    $stmt = mysqli_prepare($con, $sql);
-
     // Generate a unique identifier based on the current timestamp
     $timestamp = time();
     $randomNumber = mt_rand(1000, 9999);
     $uniqueId = uniqid();
-    $random = substr(md5($timestamp . $randomNumber . $uniqueId), 0, 6);
+    $random = substr(md5($timestamp . $randomNumber . $uniqueId), 0, 6);  
+
+    // Use prepared statement to prevent SQL injection
+    $sql = "INSERT INTO card (receiver, sender, subject, content, time, random) VALUES (?, ?, ?, ?, ?, ?)";
+
+    $stmt = mysqli_prepare($con, $sql);
 
     // Bind parameters and execute the statement
     mysqli_stmt_bind_param($stmt, "ssssss", $receiver, $sender, $subject, $content, $time, $random);

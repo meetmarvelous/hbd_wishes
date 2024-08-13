@@ -1,6 +1,6 @@
 <?php
-include "dbcon.php";
-session_start();
+require_once 'dbcon.php';
+require_once 'config.php';
 
 if (!isset($_SESSION["random"])) {
   // Your condition or code here

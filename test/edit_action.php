@@ -1,6 +1,7 @@
 <?php
-include "dbcon.php";
-session_start();
+require_once 'dbcon.php';
+require_once 'config.php';
+
 // If submit button is clicked ...
 if (isset($_POST['edit'])) {
 

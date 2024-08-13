@@ -1,6 +1,12 @@
 <?php
-include "dbcon.php";
-session_start();
+require_once 'dbcon.php';
+require_once 'config.php';
+
+if( !isset($_SESSION['random']) ) {
+  echo "<script>window.location='index.php';</script>";
+  exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +32,10 @@ session_start();
   <?php
   $random = $_SESSION["random"];
   // PHP code to generate the content to be copied
-  $contentToCopy = 'https://cardtoyou.000webhostapp.com/view.php?code=' . $random;
-  $currentUrl = 'https://cardtoyou.000webhostapp.com/view.php?code=' . $random;
-
-    
-    $message = "Hey friends! 🌟 . I have created a personalized surprise card just for you. 🎉 Click the link below to check it out and feel the warmth of the surprise! ";
+  $contentToCopy = $url_path . "view.php?code=" . $random;
+  $currentUrl = $url_path . "view.php?code=" . $random;
+  $title = "A Surprise Card";    
+  $message = "Hey friends! 🌟 . I have created a personalized surprise card just for you. 🎉 Click the link below to check it out and feel the warmth of the surprise! ";
 ?>
 
   <div class="birthdayCard">
@@ -97,7 +102,7 @@ session_start();
         document.getElementById('shareButton').addEventListener('click', function() {
             if (navigator.share) {
                 navigator.share({
-                    title: 'Your Title',
+                    title: '<?php echo $title; ?>',
                     text: '<?php echo $message; ?>',
                     url: '<?php echo $currentUrl; ?>'
                 })
