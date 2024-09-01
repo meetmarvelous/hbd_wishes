@@ -30,6 +30,29 @@ $content = $site["content"];
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+  <!-- Additional meta tags for SEO -->
+  <meta name="description" content="Create stunning cards with our online card creation tool! Customize your cards with personalized messages">
+  <meta name="keywords" content="birthday card, card creation, online card maker, custom cards, personalized cards, greeting">
+  <meta name="author" content="Marvelbyte">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:url" content="https://card.marvelbyte.xyz/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Online Card Creation Tool">
+  <meta property="og:description" content="Create stunning cards with our online card creation tool! Customize your cards with personalized messages">
+  <meta property="og:image" content="https://card.marvelbyte.xyz/images/picture1.png">
+  <meta property="og:image:alt" content="Preview of a personalized card">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:creator" content="@realmarvelous">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Online Card Creation Tool">
+  <meta name="twitter:description" content="Create stunning cards with our online card creation tool! Customize your cards with personalized messages">
+  <meta name="twitter:image" content="https://card.marvelbyte.xyz/images/picture1.png">
+  <meta name="twitter:image:alt" content="Preview of a personalized card">
+
+
   <title><?php echo $header ?></title>
 
   <!-- Icons -->
