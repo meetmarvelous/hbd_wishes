@@ -28,7 +28,9 @@ if (isset($_POST['edit'])) {
         $_SESSION["content"] = $content;
         $_SESSION["random"] = $random;
 
-        echo "<script>window.alert('Successfully edited'); window.location='create.php';</script>";
+        echo "<script>window.alert('Successfully edited');</script>";
+        header('Location: create.php');
+        exit();
     } else {
         echo "<script>window.alert('Not successful!');</script>";
     }
@@ -36,4 +38,4 @@ if (isset($_POST['edit'])) {
     // Close the statement
     mysqli_stmt_close($stmt);
 }
-?>
+
