@@ -5,7 +5,6 @@ define('PAGINATION', 4); // Pagination results per page
 if (!empty(SITE_ROOT)) {
 	$url_path = SITE_ROOT . "/";
 } else {
-	// $url_path = "/Demo/github/academy-suites/";
 	$url_path = "http://localhost/Ayo%20Workspace/Card/";
 	// $url_path = "/Ayo%20Workspace/Card/";
 }
